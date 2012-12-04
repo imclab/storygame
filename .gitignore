@@ -1,4 +1,25 @@
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+*.swp
+
+# Environment Python #
+######################
+venv
 *.log
 *.pot
 *.pyc
-local_settings.py
+
+# Django #
+##########
+local.py
+

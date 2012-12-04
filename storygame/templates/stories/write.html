@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post" action="." class="form-horizontal">
+	<div class="row">
+		<div class="span12">
+
+			<p>{{ story.last_line.last_words }} ... </p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+	        {% csrf_token %}
+	         <textarea id="id_line-line" style="width:100%" name="line-line"></textarea>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+			<small>* La idea es escribir una historia. Lo que ves son las últimas tres palabras de la linea anterior. Ahora te toca a vos escribir la siguietne linea </small>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+			<p></p>
+		    <button type="submit" class="btn btn-primary">Guardar</button>
+		</div>
+	</div>
+    </form>
+{% endblock content %}
