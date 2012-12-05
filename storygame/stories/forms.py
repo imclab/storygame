@@ -5,6 +5,3 @@ class LineForm(forms.ModelForm):
     class Meta:
     	fields = ('line',)
         model = Line
-        widgets = {
-        	'line': forms.Textarea()
-        }

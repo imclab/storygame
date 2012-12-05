@@ -2,28 +2,62 @@
 
 {% block content %}
 <form method="post" action="." class="form-horizontal">
-	<div class="row">
+
+	<div class="container-narrow">
+	    <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+        <h3 class="muted">Story Game</h3>
+      </div>
+
+      <hr>
+
+      <div class="jumbotron" style="text-align:center">
+        <h1>{{ story.name }}</h1>
+        <p class="lead">Es simple.</p><p class="lead"> Cada uno escribe una linea de la historia basado en las últimas palabras de la linea anterior. Así hasta completar el cuento.</p>
+        <a class="btn btn-large btn-success"  href="#">Un botón porque queda lindo</a>
+        <p class="lead">Seguí la historia a partir de acá.</p>
+
+      </div>
+
+      <hr>
+
+      <div class="row">
 		<div class="span12">
 
-			<p>{{ story.last_line.last_words }} ... </p>
+			<p>" ... {{ story.last_line.last_words }} ... " </p>
 		</div>
 	</div>
 	<div class="row">
 		<div class="span12">
 	        {% csrf_token %}
-	         <textarea id="id_line-line" style="width:100%" name="line-line"></textarea>
+	         <input type="text" id="id_line-line" style="width:100%" name="line-line"></inputtype="text" >
 		</div>
-	</div>
-	<div class="row">
 		<div class="span12">
-			<small>* La idea es escribir una historia. Lo que ves son las últimas tres palabras de la linea anterior. Ahora te toca a vos escribir la siguietne linea </small>
+			<small>* Segui la historia </small>
 		</div>
-	</div>
-	<div class="row">
 		<div class="span12">
 			<p></p>
 		    <button type="submit" class="btn btn-primary">Guardar</button>
 		</div>
 	</div>
     </form>
+
+    <hr>
+      <div class="footer">
+        <p>&copy; NowhereFarm 2012</p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+
+
+
+
+
+
+	
 {% endblock content %}
