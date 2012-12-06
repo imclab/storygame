@@ -10,6 +10,7 @@ from storygame.stories.forms import LineForm
 def write(request, slug_story, activation_key, t='stories/write.html', d={}):
     story = get_object_or_404(Story, slug=slug_story)
     active_membership = story.active_membership()
+    d['story']=story
     if not active_membership:
         story.turn_membership()
         return render(request, 'stories/done.html', d)

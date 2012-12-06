@@ -21,6 +21,9 @@ class Story(models.Model):
         next.activate()
         return next
 
+    def first_line(self):
+        return self.lines.order_by('pk')[0].line
+
     def last_line(self):
         return self.lines.order_by('pk').reverse()[0]
 

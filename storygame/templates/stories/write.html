@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load webdesign %}
 
 {% block content %}
 <form method="post" action="." class="form-horizontal">
@@ -6,9 +7,11 @@
 	<div class="container-narrow">
 	    <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
+{% comment %}
+                     <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">About</a></li> 
+        
+        {% endcomment %}        </ul>
         <h3 class="muted">Story Game</h3>
       </div>
 
@@ -16,48 +19,33 @@
 
       <div class="jumbotron" style="text-align:center">
         <h1>{{ story.name }}</h1>
-        <p class="lead">Es simple.</p><p class="lead"> Cada uno escribe una linea de la historia basado en las últimas palabras de la linea anterior. Así hasta completar el cuento.</p>
-        <a class="btn btn-large btn-success"  href="#">Un botón porque queda lindo</a>
-        <p class="lead">Seguí la historia a partir de acá.</p>
+        <h6 class="text-info">Cada uno escribe un pedazo del cuento sabiendo solo las últimas palabras de la linea anterior. Así empieza y te toca a vos escribir como sigue.</h6>
+        <p class="lead">"{{ story.first_line }} .......</p>
+        {% for line in story.lines.all %}
+        {% if not forloop.first and not forloop.last  %}
+          <p style="color:#F2F2F2"> {% lorem 16 w random %} </p>
+        {% endif %}
+        {% endfor %}
 
+        {% if story.lines.count > 1 %}
+          <p class="lead">........ {{ story.last_line.last_words }} ..."</p>
+        {% endif %}
+
+        {% csrf_token %}
+        <p>
+        <input type="text" id="id_line-line" style="width:80%" name="line-line"/>
+        </p>
+
+        <p>
+        <button type="submit" class="btn btn-large btn-success">Guardar</button>
+        </p>
       </div>
 
       <hr>
 
-      <div class="row">
-		<div class="span12">
-
-			<p>" ... {{ story.last_line.last_words }} ... " </p>
-		</div>
-	</div>
-	<div class="row">
-		<div class="span12">
-	        {% csrf_token %}
-	         <input type="text" id="id_line-line" style="width:100%" name="line-line"></inputtype="text" >
-		</div>
-		<div class="span12">
-			<small>* Segui la historia </small>
-		</div>
-		<div class="span12">
-			<p></p>
-		    <button type="submit" class="btn btn-primary">Guardar</button>
-		</div>
-	</div>
-    </form>
-
-    <hr>
       <div class="footer">
         <p>&copy; NowhereFarm 2012</p>
       </div>
-
     </div> <!-- /container -->
-
-
-
-
-
-
-
-
-	
+	</form>
 {% endblock content %}

@@ -1,6 +1,40 @@
 {% extends "base.html" %}
+{% load webdesign %}
+
 {% block content %}
-<p>
-	Gracias {{ user.name }}. Tu colaboración ya es parte de la historia. Ahora tenes que esperar hasta que te toque devuelta.
-</p>
+	<div class="container-narrow">
+	    <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+{% comment %}
+                     <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">About</a></li> 
+        
+        {% endcomment %}        </ul>
+        <h3 class="muted">Story Game</h3>
+      </div>
+
+      <hr>
+
+      <div class="jumbotron" style="text-align:center">
+        <h1>{{ story.name }}</h1>
+        <h6 class="text-success">Gracias {{ user.name }}. Tu colaboración ya es parte de la historia. Ahora tenes que esperar hasta que te toque devuelta.</h6>
+        <p class="lead">"{{ story.first_line }} .......</p>
+        {% for line in story.lines.all %}
+        {% if not forloop.first and not forloop.last  %}
+          <p style="color:#F2F2F2"> {% lorem 16 w random %} </p>
+        {% endif %}
+        {% endfor %}
+
+        {% if story.lines.count > 1 %}
+          <p class="lead">........ {{ story.last_line.last_words }} ..."</p>
+        {% endif %}
+      </div>
+
+      <hr>
+
+      <div class="footer">
+        <p>&copy; NowhereFarm 2012</p>
+      </div>
+    </div> <!-- /container -->
+	
 {% endblock content %}
