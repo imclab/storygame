@@ -17,7 +17,7 @@
 
       <div class="jumbotron" style="text-align:center">
         <h1>{{ story.name }}</h1>
-        <h6 class="text-success">Gracias {{ user.name }}. Tu colaboración ya es parte de la historia. Ahora tenes que esperar hasta que te toque devuelta.</h6>
+        <h6 class="text-success">Gracias. Tu colaboración ya es parte de la historia. Ahora tenés que esperar hasta que te toque de vuelta. No te preocupes, te vamos a mandar un mail.</h6>
         <p class="lead">"{{ story.first_line }} .......</p>
         {% for line in story.lines.all %}
         {% if not forloop.first and not forloop.last  %}

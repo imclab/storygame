@@ -19,7 +19,7 @@
 
       <div class="jumbotron" style="text-align:center">
         <h1>{{ story.name }}</h1>
-        <h6 class="text-info">Cada uno escribe un pedazo del cuento sabiendo solo las últimas palabras de la linea anterior. Así empieza y te toca a vos escribir como sigue.</h6>
+        <h6 class="text-info">Vamos a escribir un cuento todos juntos. Cada uno escribe un pedazo, sabiendo sólo las últimas palabras de la línea anterior. Así empieza, y ahora te toca a vos escribir como sigue.</h6>
         <p class="lead">"{{ story.first_line }} .......</p>
         {% for line in story.lines.all %}
         {% if not forloop.first and not forloop.last  %}
