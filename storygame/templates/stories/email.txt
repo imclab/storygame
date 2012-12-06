@@ -1,7 +1,7 @@
-Te llegó este e-mail porque estas participando del Juego de Fin de Año de la Dgiga. 
+Te llegó este e-mail porque estas participando del {{ story.name }}
 
-Para participar tenes que visitar este link y continuar la historia
+Para ser parte tenes que visitar este link y continuar la historia
 
 http://{{ site.domain }}{% url stories:write story.slug, story.active_membership.activation_key %}
 
-Gracias por participar!!!
+Gracias no seas vago y hacelo AHORA!!!
