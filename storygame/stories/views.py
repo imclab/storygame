@@ -31,7 +31,7 @@ def write(request, slug_story, activation_key, t='stories/write.html', d={}):
             email = EmailMessage(
                 'Estas participando del concurso',
                 message,
-                to=[active_membership.user.email])
+                to=[next.user.email])
             email.send()
             return render(request, 'stories/done.html', d)  
     else:
